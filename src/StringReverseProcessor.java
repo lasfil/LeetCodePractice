@@ -1,8 +1,11 @@
 import java.util.Scanner;
-import java.util.Stack;
 public class StringReverseProcessor {
 	private String orgString;
 	private String revString;
+	
+	public StringReverseProcessor(String s) {
+		this.orgString = s;
+	}
 	
 	public String getOrgString() {
 		return orgString;
@@ -39,8 +42,8 @@ public class StringReverseProcessor {
 	}
 	
 	public static void main(String[] args) {
-		StringReverseProcessor srp = new StringReverseProcessor();
-		srp.setOrgString(" ");
+		StringReverseProcessor srp = new StringReverseProcessor(" ");
+		//srp.setOrgString(" ");
 		srp.process();
 		System.out.println("Org String:" + srp.getOrgString() + ".");
 		System.out.println("reversed String:" + srp.getRevString() + ".");
