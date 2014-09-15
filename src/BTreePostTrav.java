@@ -28,11 +28,17 @@ public class BTreePostTrav {
 		while (!stack.isEmpty()) {
 
 			TreeNode n = stack.peek();
-			if (isLeaf(n) || n.right == null || n.right == last) {
+			//该处理栈顶元素的时候，证明左子树已经遍历完成或者为空，
+			//右子树为空或者等于last时候表示是刚遍历完右子树,或者右子树为空
+			//此时应该最后遍历自己，所以将自己加入list并弹出，将自己设置为last
+			// if (isLeaf(n) || n.right == null || n.right == last) {
+			if (n.right == null || n.right == last) {
 				result.add(n.val);
 				last = n;
 				stack.pop();
-			} else if (n.left == null || n.left == last){
+			// } else if (n.left == null || n.left == last){
+			//else表示右子树不为空也不为last，此时则应该遍历右子树，将右子树的所有左子压入栈
+			} else {
 				cursor = n.right;
 				while (cursor != null) {
 					stack.push(cursor);
@@ -43,10 +49,4 @@ public class BTreePostTrav {
 
 		return result;
 	}
-
-	private boolean isLeaf(TreeNode n) {
-		return (n != null && n.left == null && n.right == null);
-	}
-	
-	
 }
