@@ -1,3 +1,10 @@
+/*There are N children standing in a line. Each child is assigned a rating value.
+
+You are giving candies to these children subjected to the following requirements:
+
+Each child must have at least one candy.
+Children with a higher rating get more candies than their neighbors.
+What is the minimum candies you must give?*/
 public class Candy {
 	public int candy(int[] ratings) {
 		//例如ratings＝{11, 10, 10, 18, 1, 1, 2, 5, 5, 3, 6, 7, 9, 8, 7, 6, 5, 4, 4}
