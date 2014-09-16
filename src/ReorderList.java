@@ -1,4 +1,3 @@
-import java.util.ArrayDeque;
 
 public class ReorderList {
 	public void reorderList(ListNode head) {

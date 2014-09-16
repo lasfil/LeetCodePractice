@@ -31,6 +31,7 @@ public class MaxLinePoints {
 			return 2;
 		
 
+		@SuppressWarnings("unchecked")
 		ArrayList<Point>[][] lines = new ArrayList[n][n];
 		int pNum;
 		int[] repeatIndex = new int[n];
