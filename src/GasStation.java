@@ -17,7 +17,9 @@ public class GasStation {
 		}
 
 		int max = 0;
-		//
+		//这种情况表明肯定存在一个出发点，从0开始排除
+		//如果走到第i个点，sum div为负数，表示无法开到第i个点
+		//此时重置i+1为出发点，重新计算sum div
 		int start = 0;
 		
 		for (int i = 0; i < n; i++) {
