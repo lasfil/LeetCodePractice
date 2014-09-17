@@ -19,7 +19,7 @@ public class LongestConsecutiveSequence {
         Arrays.sort(num);
         int longest = 1;
         int count = 1;
-        
+        Math.max(longest, count);
         
         
         for (int i = 1; i < len; i++) {
