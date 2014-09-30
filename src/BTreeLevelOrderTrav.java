@@ -19,6 +19,7 @@
  */
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -49,6 +50,34 @@ public class BTreeLevelOrderTrav {
         }
         
         return result;
+    }
+	
+	public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        Deque<List<Integer>> result = new LinkedList<List<Integer>>();
+        if (root == null)
+            return (List)result;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        Queue<TreeNode> child = new LinkedList<TreeNode>();
+        List<Integer> level = new ArrayList<Integer>();
+        q.offer(root);
+        TreeNode head = null;
+        while (!q.isEmpty()) {
+            head = q.poll();
+            
+            level.add(head.val);
+            if (head.left != null)
+                child.offer(head.left);
+            if (head.right != null)
+                child.offer(head.right);
+            if (q.isEmpty()) {
+                while (!child.isEmpty())
+                	q.offer(child.poll());
+                result.addFirst(level);
+                level = new ArrayList<Integer>();
+            }
+        }
+        
+        return (List)result;
     }
 	
 	public static void main(String[] args) {
