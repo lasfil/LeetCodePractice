@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-public class BTreeOrderTrav {
+public class BTreeLevelOrderTrav {
 	public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         if (root == null)
@@ -56,7 +56,7 @@ public class BTreeOrderTrav {
 		TreeNode left = new TreeNode(4);
 		left = new TreeNode(left, new TreeNode(5), 2);
 		TreeNode root = new TreeNode(left, new TreeNode(3),1);
-		System.out.println(new BTreeOrderTrav().levelOrder(root));
+		System.out.println(new BTreeLevelOrderTrav().levelOrder(root));
 	}
 	
 	static class TreeNode {
