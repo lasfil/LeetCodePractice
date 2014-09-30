@@ -60,6 +60,6 @@ public class LinkedListToBST {
 		tail = tail.next;
 		tail.next = new ListNode(8);
 		tail = tail.next;
-		TreeNode root = new LinkedListToBST().sortedListToBST(head);
+		new LinkedListToBST().sortedListToBST(head);
 	}
 }
