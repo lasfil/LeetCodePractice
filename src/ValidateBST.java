@@ -25,6 +25,27 @@ public class ValidateBST {
 			this.right = right;
 		}
 	}
+	private TreeNode pre = null;
+	public boolean isValidBST2(TreeNode root) {
+		
+		return  inorderTrav(root)== null;
+	}
+
+	private TreeNode inorderTrav(TreeNode root) {
+		if (root == null)
+			return null;
+		TreeNode fault = inorderTrav(root.left);
+		if (pre == null) {
+			pre = root;
+		} else {
+			if (pre.val > root.val) 
+				fault = pre;
+			else
+				pre = root;
+		}
+		fault = fault == null ? inorderTrav(root.right) : fault;
+		return fault;
+	}
 
 	public boolean isValidBST(TreeNode root) {
 
