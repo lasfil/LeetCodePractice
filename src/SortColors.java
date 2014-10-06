@@ -24,7 +24,6 @@ public class SortColors {
 			return;
 		int a = 0;
 		int b = 0;
-		int c = 0;
 
 		for (int i = 0; i < A.length; i++) {
 			switch (A[i]) {
@@ -33,9 +32,6 @@ public class SortColors {
 				break;
 			case 1:
 				b++;
-				break;
-			case 2:
-				c++;
 				break;
 			}
 		}
