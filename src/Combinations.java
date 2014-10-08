@@ -46,7 +46,32 @@ public class Combinations {
         return result;
     }
 	
+	ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();  
+	public ArrayList<ArrayList<Integer>> combine1(int n,int k){  
+	    if(n < 0 || k < 0 || n < k){  
+	        return result;  
+	    }  
+	    for(int i = 1; i <= n - k + 1;i++){  
+	        ArrayList<Integer> list = new ArrayList<Integer>();  
+	        dfs(i,k,n,list);  
+	    }  
+	    return result;  
+	}//begin表示现在遍历到的数组元素，holdNum表示list.size()  
+	private void dfs(int begin,int k,int n,ArrayList<Integer> list){  
+	    list.add(begin);  
+	    if(list.size() == k ){//已经达到k个之后，将数组压入result  
+	        ArrayList<Integer> copyList = new ArrayList<Integer>(list);  
+	        result.add(copyList);  
+	        return;  
+	    }//否则就一直往下遍历各种可能  
+	    for(int j = begin + 1; j <= n; j++){  
+	        dfs(j, k, n, list);  
+	        list.remove(list.get(list.size()-1));//回溯  
+	    }  
+	}  
+
+	
 	public static void main(String[] args) {
-		new Combinations().combine(3,  2);
+		new Combinations().combine1(5,  4);
 	}
 }
