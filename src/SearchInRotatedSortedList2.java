@@ -23,7 +23,7 @@ public class SearchInRotatedSortedList2 {
 				h--;
 			}
 
-			int mid = (h - l) / 2 + l;
+			int mid = (h + l) / 2;
 			if (target == A[mid] || target == A[l] || target == A[h])
 				return true;
 			if (A[mid] > A[l]) {
@@ -47,6 +47,39 @@ public class SearchInRotatedSortedList2 {
 		}
 
 		return false;
+	}
+	
+	public boolean search1(int[] A, int target) {
+		int low = 0;
+		int high = A.length - 1;
+		int mid = 0;
+		while (low <= high) {
+			mid = (low + high) / 2;
+			if (A[mid] == target)
+				return true;
+			else if (A[low] != A[high]) {
+				if (A[low] <= A[mid]) {
+					if (target >= A[low] && target < A[mid]) {
+						high = mid - 1;
+					} else {
+						low = mid + 1;
+					}
+				} else {
+					if (target <= A[high] && target > A[mid]) {
+						low = mid + 1;
+					} else {
+						high = mid - 1;
+					}
+				}
+			} else {
+				for (int k = low; k < high; k++) {
+					if (A[k] == target)
+						return true;
+				}
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public static void main(String[] args) {
