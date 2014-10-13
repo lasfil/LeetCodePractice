@@ -1,4 +1,3 @@
-import RemoveDuplicateFromLinkedList.ListNode;
 
 /**
  * Given a sorted linked list, delete all nodes that have duplicate numbers,
