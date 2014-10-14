@@ -41,7 +41,7 @@ public class DistinctSubSequence {
         for (int i = 0; i < n; i++)
             com.add(new ArrayList<Integer>());
         
-        for (int num : appear.get(n - 1)) 
+        for (int i = 0; i < appear.get(n - 1).size(); i++) 
             com.get(n - 1).add(1);
         
         for (int i = n - 2; i >= 0; i--) {

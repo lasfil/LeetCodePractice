@@ -1,7 +1,7 @@
 
 public class Test {
 	public static void main(String[] args) {
-		String s = "`l;`` 1o1 ??;l`";
-		new ValidPalindrome().isPalindrome(s);
+		int[] A = new int[]{1, 7, 8, 5, 4, 6, 2, 1000, -1};
+		new FirstMissingPositive().firstMissingPositive1(A);
 	}
 }
