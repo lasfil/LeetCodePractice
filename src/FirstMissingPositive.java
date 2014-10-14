@@ -9,10 +9,10 @@ public class FirstMissingPositive {
 	public int firstMissingPositive(int[] A) {
 		if (A.length == 0)
 			return 1;
-		int[] B = new int[A.length + 1];
+		int[] B = new int[A.length];
 
 		for (int i = 0; i < A.length; i++) {
-			if (A[i] > 0 && A[i] < B.length)
+			if (A[i] > 0 && A[i] <= B.length)
 				B[A[i] - 1] = A[i];
 		}
 

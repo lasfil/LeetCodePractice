@@ -40,7 +40,12 @@ public class Permutations {
     }
 	
 	public static void main(String[] args) {
-		int[] num = new int[]{0, 1};
-		new Permutations().permute(num);
+		int[] num = new int[]{0, 1, 2, 3, 4, 5};
+		List<List<Integer>> list= new Permutations().permute(num);
+		for (List<Integer> l : list) {
+			for (int i : l)
+				System.out.print(i + " ");
+			System.out.println();
+		}
 	}
 }
