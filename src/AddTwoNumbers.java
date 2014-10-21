@@ -20,7 +20,7 @@ public class AddTwoNumbers {
         ListNode tail = head;
         
         int add = 0;
-        
+        //一直相加到l1,l2都为空
         while (c1 != null || c2 != null) {
             int sum = ((c1 == null) ? 0 : c1.val) + ((c2 == null) ? 0 : c2.val) + add;
             ListNode node = new ListNode(sum % 10);
