@@ -1,8 +1,19 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+/**
+ * Given a string s, partition s such that every substring of the partition is a
+ * palindrome. Return the minimum cuts needed for a palindrome partitioning of
+ * s.
+ * 
+ * For example, given s = "aab", Return 1 since the palindrome partitioning
+ * ["aa","b"] could be produced using 1 cut.
+ * 
+ * D[i] = min(1 + D[j + 1], D[i]) i<=j<n s[i, j] is palindrome
+ */
 public class PalindromePartitioning2 {
 	public int minCut(String s) {
 		if (s == null)
@@ -19,62 +30,42 @@ public class PalindromePartitioning2 {
 		}
 
 		List<Integer>[] index = new List[len];
-		int[] minCut = new int[len];
-		for (int i = len - 1; i >= 0; i--) {
-			minCut[i] = len - 1 - i;
+		int[] minCut = new int[len + 1];
+		for (int i = len; i >= 0; i--) {
+			minCut[i] = len - i;
 		}
 		for (int i = len - 1; i >= 0; i--) {
-			if (index[i] == null) {
-				index[i] = new ArrayList<Integer>();
-				index[i].add(i);
-				if (i + 1 < len)
-					minCut[i] = Math.min(minCut[i], minCut[i + 1] + 1);
-			}
-
-			int j = i + 1;
+	        int j = i;
 			int k = i;
 			while (k >= 0 && j < len && s.charAt(k) == s.charAt(j)) {
 				if (index[k] == null) {
 					index[k] = new ArrayList<Integer>();
-					index[k].add(i);
+					index[k].add(k);
 				}
 				index[k].add(j);
-				if (j == len - 1)
-					minCut[k] = 0;
-				else
+				
 					minCut[k] = Math.min(minCut[k], minCut[j + 1] + 1);
 				k--;
 				j++;
 			}
-
-			j = i + 2;
-			k = i;
+			j = i + 1;
+		    k = i;
 			while (k >= 0 && j < len && s.charAt(k) == s.charAt(j)) {
 				if (index[k] == null) {
 					index[k] = new ArrayList<Integer>();
-					index[k].add(i);
+					index[k].add(k);
 				}
 				index[k].add(j);
-				if (j == len - 1)
-					minCut[k] = 0;
-				else
+				
 					minCut[k] = Math.min(minCut[k], minCut[j + 1] + 1);
 				k--;
 				j++;
 			}
+
+		
 		}
 
-		return minCut[0];
-	}
-
-	private boolean isPalindrome(String s, int start, int end) {
-
-		while (start < end) {
-			if (s.charAt(start++) != s.charAt(--end))
-				return false;
-		}
-
-		return true;
+		return minCut[0] - 1;
 	}
 
 	public int minCut2(String s) {
@@ -119,11 +110,11 @@ public class PalindromePartitioning2 {
 				+ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 				+ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 				+ "aaaaaaaaaaaaaaaaaaaaaa";
-		String s1 = "cdd";
+		String s1 = "cddddccdbabcbcb";
 		System.out.println(Calendar.getInstance().getTimeInMillis());
 		new PalindromePartitioning2().minCut2(s);
 		System.out.println(Calendar.getInstance().getTimeInMillis());
-		new PalindromePartitioning2().minCut(s1);
+		new PalindromePartitioning2().minCut(s);
 		System.out.println(Calendar.getInstance().getTimeInMillis());
 
 	}
