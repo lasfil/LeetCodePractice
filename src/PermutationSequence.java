@@ -36,7 +36,7 @@ public class PermutationSequence {
 	}
 
 	public static void main(String[] args) {
-		System.out.print(new PermutationSequence().getPermutation(8, 22344));
+		System.out.print(new PermutationSequence().getPermutation(6, 400));
 	}
 
 }
