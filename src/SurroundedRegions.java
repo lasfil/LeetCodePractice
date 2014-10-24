@@ -15,27 +15,19 @@ public class SurroundedRegions {
 
 		for (int i = 0; i < m; i++) {
 			if (board[i][0] == 'O')
-				markLive(board, i, 0, live);
+				live[i][0] = true;
 			if (board[i][n - 1] == 'O')
-				markLive(board, i, n - 1, live);
+				live[i][n - 1] = true;
 		}
 		for (int j = 0; j < n; j++) {
 			if (board[0][j] == 'O')
-				markLive(board, 0, j, live);
+				live[0][j] = true;
 			if (board[m - 1][j] == 'O')
-				markLive(board, m - 1, j, live);
+				live[m - 1][j] = true;
 		}
 
 		for (int i = 1; i < m - 1; i++) {
 			for (int j = 1; j < n - 1; j++) {
-				if (board[i][j] == 'O'
-						&& (live[i][j] || live[i - 1][j] || live[i + 1][j]
-								|| live[i][j - 1] || live[i][j + 1]))
-					markLive(board, i, j, live);
-			}
-		}
-		for (int i = m - 2; i > 0; i--) {
-			for (int j = n - 2; j > 0; j--) {
 				if (board[i][j] == 'O'
 						&& (live[i][j] || live[i - 1][j] || live[i + 1][j]
 								|| live[i][j - 1] || live[i][j + 1]))
@@ -49,7 +41,6 @@ public class SurroundedRegions {
 					board[i][j] = 'X';
 			}
 		}
-		return;
 	}
 
 	private void markLive(char[][] board, int i, int j, boolean[][] live) {
@@ -57,79 +48,26 @@ public class SurroundedRegions {
 		live[i][j] = true;
 		int k = i - 1;
 		while (k > 0 && board[k][j] == 'O' && !live[k][j]) {
-			live[k--][j] = true;
-			// markLive(board, i - 1, j, live);
+			//live[k--][j] = true;
+			markLive(board, k--, j, live);
 		}
 		k = j - 1;
 		while (k > 0 && board[i][k] == 'O' && !live[i][k]) {
-			live[i][k--] = true;
-			// markLive(board, i, j - 1, live);
+			//live[i][k--] = true;
+			markLive(board, i, k--, live);
 		}
 		k = i + 1;
 		while (k < board.length - 1 && board[k][j] == 'O' && !live[k][j]) {
-			live[k++][j] = true;
-			// markLive(board, i + 1, j, live);
+			//live[k++][j] = true;
+			markLive(board, k++, j, live);
 		}
 		k = j + 1;
 		while (k < board[0].length - 1 && board[i][k] == 'O' && !live[i][k]) {
-			live[i][k++] = true;
-			// markLive(board, i, j + 1, live);
+			//live[i][k++] = true;
+			markLive(board, i, k++, live);
 		}
 	}
-	public void solve1(char[][] board) {
-        if (board == null || board.length == 0)
-            return;
-        int m = board.length;
-        int n = board[0].length;
-        
-        if (m < 3 || n < 3)
-            return;
-        
-        boolean[][] live = new boolean[m][n];
-        
-        for (int i = 0; i < m; i++) {
-            if (board[i][0] == 'O')
-                markLive1(board, i, 0, live);
-            if (board[i][n - 1] == 'O')
-                markLive1(board, i, n - 1, live);
-        }
-        for (int j = 0; j < n; j++) {
-            if (board[0][j] == 'O')
-                markLive1(board, 0, j, live);
-            if (board[m - 1][j] == 'O')
-                markLive1(board, m - 1, j, live);
-        }
-        
-        for (int i = 1; i < m -1; i++) {
-            for (int j = 1; j < n - 1; j++) {
-                if (board[i][j] == 'O' && !live[i][j])
-                    board[i][j] = 'X';
-            }
-        }
-        return;
-    }
-    
-    private void markLive1(char[][] board, int i, int j, boolean[][] live) {
-        if (live[i][j])
-            return;
-        live[i][j] = true;
-        if (i > 0 && board[i - 1][j] == 'O' && !live[i - 1][j]) {
-            //live[i - 1][j] = true;
-            markLive(board, i - 1, j, live);
-        }
-        if (j > 0 && board[i][j - 1] == 'O' && !live[i][j - 1]) {
-            //live[i][j - 1] = true;
-            markLive(board, i, j - 1, live);
-        }
-        if (i < board.length - 1 && board[i + 1][j] == 'O' && !live[i + 1][j]) {
-            //live[i + 1][j] = true;
-            markLive(board, i + 1, j, live);
-        }
-        if (j < board[0].length - 1 && board[i][j + 1] == 'O' && !live[i][j + 1]) {
-            //live[i][j - 1] = true;
-            markLive(board, i, j + 1, live);
-        }
-    }
+	
     public void solve2(char[][] board) {
 		int row = board.length;
 		if (row == 0)
