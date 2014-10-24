@@ -8,7 +8,7 @@ import java.util.List;
  * return [1,6],[8,10],[15,18].
  */
 
-public class MergeInterval {
+public class MergeIntervals {
 	static class Interval {
 		int start;
 		int end;
