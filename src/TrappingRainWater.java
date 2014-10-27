@@ -4,12 +4,12 @@ public class TrappingRainWater {
 			return 0;
 		if (A.length < 3)
 			return 0;
-
+		// 先从左向右找到最高的left，left左边的都比它低，肯定存不了水，不考虑
 		int left = 0;
 		while (left < A.length - 1 && A[left] <= A[left + 1]) {
 			left++;
 		}
-
+		// 同理找到自右向左最高的end，end右边不考虑
 		int end = A.length - 1;
 		while (end > 0 && A[end - 1] > A[end])
 			end--;
