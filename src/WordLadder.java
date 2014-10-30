@@ -11,44 +11,39 @@ public class WordLadder {
 		if (start == null || end == null || dict == null || start.length() == 0
 				|| end.length() == 0 || dict.size() == 0 || start.equals(end))
 			return 0;
-		if (differ(start, end) == 1)
-		    return 2;
-		ArrayList<String> dictlist = new ArrayList<String>(dict);
-		dictlist.remove(start);
-		dictlist.remove(end);
+
 		List<String> cur = new ArrayList<String>();
 		HashSet<String> visited = new HashSet<String>();
 		cur.add(start);
 		return wfs(dict, cur, 1, end, visited);
 	}
-	
-	private int wfs(Set<String> dict, List<String> cur, int step, String end, HashSet<String> visited) {
+
+	private int wfs(Set<String> dict, List<String> cur, int step, String end,
+			HashSet<String> visited) {
 		if (cur.size() == 0 || dict.size() == 0)
-				return 0;
-	    List<String> next = new ArrayList<String>();
-	    
-	    for (String str : cur) {
-	        if(differ(str, end) == 1)
-	            return step + 1;
-	        StringBuffer sb = new StringBuffer(str);
-	        for (int i = 0; i < sb.length(); i++) {
-					for (int j = 0; j < 26; j++) {
-						char c = sb.charAt(i);
-						sb.setCharAt(i, (char) ('a' + j));
-						if (dict.contains(sb.toString())) {
-							next.add(sb.toString());
-							dict.remove(sb.toString());
-						}
-						sb.setCharAt(i, c);
+			return 0;
+		List<String> next = new ArrayList<String>();
+
+		for (String str : cur) {
+			if (differ(str, end) == 1)
+				return step + 1;
+			StringBuffer sb = new StringBuffer(str);
+			for (int i = 0; i < sb.length(); i++) {
+				for (int j = 0; j < 26; j++) {
+					char c = sb.charAt(i);
+					sb.setCharAt(i, (char) ('a' + j));
+					if (dict.contains(sb.toString())) {
+						next.add(sb.toString());
+						dict.remove(sb.toString());
 					}
+					sb.setCharAt(i, c);
 				}
-	    }
-	    
-	    return wfs(dict, next, step + 1, end, visited);
+			}
+		}
+
+		return wfs(dict, next, step + 1, end, visited);
 	}
 
-
-	
 	private int differ(String a, String b) {
 		int count = 0;
 		for (int i = 0; i < a.length(); i++) {
@@ -100,8 +95,6 @@ public class WordLadder {
 		}
 		return found ? step : 0;
 	}
-
-	
 
 	public static void main(String[] args) {
 		String start = "nape";
@@ -180,7 +173,7 @@ public class WordLadder {
 				"faun", "suck", "kegs", "nita", "weer", "tush", "spry", "loge",
 				"nays", "heir", "dope", "roar", "peep", "nags", "ates", "bane",
 				"seas", "sign", "fred", "they", "lien" };
-		
+
 		Set<String> d = new HashSet<String>();
 		for (String str : s)
 			d.add(str);
