@@ -6,18 +6,17 @@ import java.util.ArrayList;
  */
 public class DivideTwoIntegers {
 	public int divide(int dividend, int divisor) {
-
+		if (dividend == divisor)
+			return 1;
+		if (dividend == 0 || divisor == Integer.MIN_VALUE)
+			return 0;
 		if (divisor == 0) {
 			if (dividend > 0)
 				return Integer.MAX_VALUE;
 			else
 				return Integer.MIN_VALUE;
 		}
-		if (dividend == divisor)
-			return 1;
 
-		if (dividend == 0 || divisor == Integer.MIN_VALUE)
-			return 0;
 		if (divisor == 1) {
 			return dividend;
 		}
@@ -26,12 +25,23 @@ public class DivideTwoIntegers {
 			return (int) (0 - (long) dividend);
 		}
 
-		boolean neg = ((dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0));
-		long dividendl = Math.abs((long) dividend);
-		long divisorl = Math.abs((long) divisor);
+		if (divisor == Integer.MAX_VALUE) {
+			if (dividend <= -Integer.MAX_VALUE)
+				return -1;
+			else
+				return 0;
+		}
 
+		boolean neg = ((dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0));
+		long dividendl = (long) dividend;
+		long divisorl = (long) divisor;
+
+		dividendl = Math.abs(dividendl);
+		divisorl = Math.abs(divisorl);
 		if (dividendl == divisorl)
 			return -1;
+		if (dividendl < divisorl)
+			return 0;
 
 		StringBuffer sbret = new StringBuffer();
 		StringBuffer temp = new StringBuffer();
@@ -51,14 +61,13 @@ public class DivideTwoIntegers {
 			remain = digDividend;
 			sbret.append(count);
 		}
-		if (sbret.length() == 0)
-			return 0;
+
 		int result = Integer.valueOf(sbret.toString());
 		if (neg)
 			result = 0 - result;
 		return result;
 	}
-	
+
 	public int divide1(int dividend, int divisor) {
 		if (dividend == 0)
 			return 0;

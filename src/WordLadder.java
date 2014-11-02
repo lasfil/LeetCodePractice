@@ -15,10 +15,10 @@ public class WordLadder {
 		List<String> cur = new ArrayList<String>();
 		HashSet<String> visited = new HashSet<String>();
 		cur.add(start);
-		return wfs(dict, cur, 1, end, visited);
+		return bfs(dict, cur, 1, end, visited);
 	}
 
-	private int wfs(Set<String> dict, List<String> cur, int step, String end,
+	private int bfs(Set<String> dict, List<String> cur, int step, String end,
 			HashSet<String> visited) {
 		if (cur.size() == 0 || dict.size() == 0)
 			return 0;
@@ -41,7 +41,7 @@ public class WordLadder {
 			}
 		}
 
-		return wfs(dict, next, step + 1, end, visited);
+		return bfs(dict, next, step + 1, end, visited);
 	}
 
 	private int differ(String a, String b) {
