@@ -27,6 +27,7 @@ public class WildcardMatching {
 		StringBuffer pb = new StringBuffer(p);
 		int m = sb.length();
 		int n = pb.length();
+		// 先从两头单个字母匹配，直到碰到*为止
 		while (n > 0 && m > 0 && pb.charAt(0) != '*') {
 			if (pb.charAt(0) == '?' || sb.charAt(0) == pb.charAt(0)) {
 				sb.deleteCharAt(0);
@@ -53,45 +54,43 @@ public class WildcardMatching {
 		p = pb.toString();
 		if (n == 0)
 			return m == 0;
-
+		// any记录是否有*，single记录？的个数
 		boolean any = false;
-		int single = 0;
 		int j = 0;
 		int i = 0;
 
 		while (j < n) {
 
 			char cp = p.charAt(j);
-
+			// p中遇到？j向后移动一位，i向后移动一位
 			if (cp == '?') {
-				if (any == false) {
-					i++;
-				} else
-					single++;
+				i++;
 				j++;
 				continue;
 			}
-
+			// p中遇到*, any设为true,j向后移动一位
 			if (cp == '*') {
 				any = true;
 				j++;
 				continue;
 			}
 
-			i = i + single;
-
 			if (i >= m)
 				return false;
-			single = 0;
 			int k = 1;
+			// p中是字母的话，从j到下一个'?'或'*'做为一个窗口
+			// 首先确定窗口大小k,
 			while (k + j < n) {
 				char next = p.charAt(k + j);
 				if (next == '?' || next == '*')
 					break;
 				k++;
+				if (i + k > m)
+					return false;
 			}
-			if (i + k > m)
-				return false;
+			// 然后从i开始匹配k个字符与j后的k个字符,
+			// any为false的话只能匹配一次，
+			// 为true的话i中窗口可以顺序向后移动直到匹配成功或者i + k > m返回false
 			while (!s.substring(i, i + k).equals(p.substring(j, j + k))) {
 				if (any == false)
 					return false;
@@ -105,9 +104,11 @@ public class WildcardMatching {
 		}
 
 		if (any)
-			return m - i >= single;
+			// 匹配完成后如果最后一位字母后边有*，i应该小于等于m
+			return m >= i;
 		else
-			return m - i == single;
+			// 匹配完成后如果最后一位字母后边没有*，i应该等于m
+			return m == i;
 	}
 
 	public boolean isMatch1(String s, String p) {
@@ -137,12 +138,12 @@ public class WildcardMatching {
 	}
 
 	public static void main(String[] args) {
-		// String s = "mississippi";
-		// String p = "m*issi*iss*";
-		// String s = "a";
-		// String p = "*a*";
-		String s = "abaab";
-		String p = "*?a?";
+		// String s = "misissippi";
+		// String p = "m*issi*i*";
+		String s = "aaaaaaaa";
+		String p = "a*???????aa*";
+		// String s = "abaab";
+		// String p = "*.a.";
 		System.out.println(new WildcardMatching().isMatch(s, p));
 	}
 }
