@@ -125,9 +125,11 @@ public class WildcardMatching {
 				star = j++;
 				mark = i;
 			} else if (star != -1) {
+				// 遇到不匹配的情况j从上一个＊号从新开始，i从mark的地方重新开始，mark也向后移动一位
 				j = star + 1;
 				i = ++mark;
 			} else {
+				// p中没有'*'遇到不匹配的情况
 				return false;
 			}
 		}
@@ -138,12 +140,12 @@ public class WildcardMatching {
 	}
 
 	public static void main(String[] args) {
-		// String s = "misissippi";
-		// String p = "m*issi*i*";
-		String s = "aaaaaaaa";
-		String p = "a*???????aa*";
+		String s = "misissippi";
+		String p = "missiiabc";
+		// String s = "aaaaaaaa";
+		// String p = "a*???????aa*";
 		// String s = "abaab";
 		// String p = "*.a.";
-		System.out.println(new WildcardMatching().isMatch(s, p));
+		System.out.println(new WildcardMatching().isMatch1(s, p));
 	}
 }
