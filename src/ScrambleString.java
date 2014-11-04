@@ -34,23 +34,22 @@ public class ScrambleString {
 		int n = s2.length();
 		if (m != n)
 			return false;
-		if (m == 1)
-			return s1.equals(s2);
 
 		char[] c1 = s1.toCharArray();
 		char[] c2 = s2.toCharArray();
 		Arrays.sort(c1);
 		Arrays.sort(c2);
-
+		// 如果出现不同字符返回false
 		if (!new String(c1).equals(new String(c2)))
 			return false;
 
 		for (int i = 1; i < m; i++) {
-
+			// 暴力组合找到一条分界线，s1的前半段和s2同样分割的前半段互为scamble，
+			// 两个后半段也互为scramble，整个都为scramble
 			if (isScramble(s1.substring(0, i), s2.substring(0, i))
 					&& isScramble(s1.substring(i), s2.substring(i)))
 				return true;
-
+			// s2与s1同样分割方法不成立的话，s2与s1对称分割，再次验证
 			if (isScramble(s1.substring(0, i), s2.substring(m - i))
 					&& isScramble(s1.substring(i), s2.substring(0, m - i)))
 				return true;
@@ -80,11 +79,11 @@ public class ScrambleString {
 		}
 
 		for (int i = 1; i < s1.length(); i++) {
-			boolean result = isScramble(s1.substring(0, i), s2.substring(0, i))
-					&& isScramble(s1.substring(i), s2.substring(i));
+			boolean result = isScramble1(s1.substring(0, i), s2.substring(0, i))
+					&& isScramble1(s1.substring(i), s2.substring(i));
 			result = result
-					|| (isScramble(s1.substring(0, i),
-							s2.substring(s2.length() - i, s2.length())) && isScramble(
+					|| (isScramble1(s1.substring(0, i),
+							s2.substring(s2.length() - i, s2.length())) && isScramble1(
 							s1.substring(i), s2.substring(0, s2.length() - i)));
 			if (result)
 				return true;
@@ -93,8 +92,7 @@ public class ScrambleString {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(new ScrambleString().isScramble("abcdefghijklmnopq",
-				"abcdefghijklmnopq"));
+
 		System.out.println(new ScrambleString().isScramble1(
 				"abcdefghijklmnopq", "abcdefghijklmnopq"));
 	}
