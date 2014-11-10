@@ -107,4 +107,7 @@ class ListNode {
 		this.val = val;
 		next = null;
 	}
+	public String toString() {
+		return val + "";
+	}
 }
