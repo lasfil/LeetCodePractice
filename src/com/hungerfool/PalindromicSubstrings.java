@@ -28,26 +28,18 @@ public class PalindromicSubstrings {
 		for (int i = 0; i < s.length(); i++) {
 			left = i;
 			right = i;
-			while (left >= 0 && right < s.length()) {
-				if (s.charAt(left) == s.charAt(right)) {
-					result++;
-					left--;
-					right++;
-				} else {
-					break;
-				}
+			while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+				result++;
+				left--;
+				right++;
 			}
 
 			left = i;
 			right = i + 1;
-			while (left >= 0 && right < s.length()) {
-				if (s.charAt(left) == s.charAt(right)) {
-					result++;
-					left--;
-					right++;
-				} else {
-					break;
-				}
+			while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+				result++;
+				left--;
+				right++;
 			}
 		}
 
