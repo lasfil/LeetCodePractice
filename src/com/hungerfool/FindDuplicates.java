@@ -18,7 +18,7 @@ Output:
 public class FindDuplicates {
 	public static List<Integer> findDuplicates() {
 		int[] input = new int[] { 4, 3, 2, 7, 8, 2, 3, 1 };
-		return findDuplicates1(input);
+		return findDuplicates(input);
 	}
 
 	public static List<Integer> findDuplicates(int[] nums) {

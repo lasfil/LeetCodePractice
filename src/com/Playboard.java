@@ -1,4 +1,5 @@
-package com.hungerfool;
+package com;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -6,14 +7,27 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
+
+import com.hungerfool.PredictTheWinner;
+import com.hungerfool.stock.BestTimetoBuyandSellStockwithTransactionFee714;
+import com.zinkirin.dynamicprogramming.*;
 
 public class Playboard {
 
 	public static void main(String args[]) {
-
+		BestTimetoBuyandSellStockwithTransactionFee714.maxProfit();
+	}
+	
+	public static int[] randomArray(int length) {
+		Random random = new Random();
+		int[] result = new int[length];
+		for (int i = 0; i < length; i++) {
+			result[i] = Math.abs(random.nextInt(1000000));
+		}
 		
-		ReconstructQueue.reconstructQueue();
+		return result;
 	}
 
 	public static int numSubarrayProductLessThanK(int[] nums, int k) {
