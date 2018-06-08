@@ -1,6 +1,6 @@
 package com.hungerfool;
 
-import com.Playboard;
+import com.cyandragon.leetcode.Playboard;
 
 public class PredictTheWinner {
 	private static int sum1 = 0;
