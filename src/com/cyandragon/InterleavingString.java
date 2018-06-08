@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class InterleavingString {
 	public boolean isInterleave(String s1, String s2, String s3) {
 		if (s1 == null && s2 == null)

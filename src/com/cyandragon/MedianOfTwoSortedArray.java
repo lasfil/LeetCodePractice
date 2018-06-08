@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 
 /**
  * There are two sorted arrays A and B of size m and n respectively. Find the

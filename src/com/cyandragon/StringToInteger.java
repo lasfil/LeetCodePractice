@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 /**
  * Implement atoi to convert a string to an integer.
  * 

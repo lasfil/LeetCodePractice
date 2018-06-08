@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class RotateList {
 	static class ListNode {
 		int val;

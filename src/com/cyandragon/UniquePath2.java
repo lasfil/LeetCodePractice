@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class UniquePath2 {
 	public int uniquePathsWithObstacles(int[][] obstacleGrid) {
 		if (obstacleGrid.length == 0)

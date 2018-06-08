@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 
 /**
  * The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: 

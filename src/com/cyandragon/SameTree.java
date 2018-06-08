@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 
 import java.util.Deque;
 import java.util.LinkedList;

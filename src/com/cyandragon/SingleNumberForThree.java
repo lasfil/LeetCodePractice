@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 import java.util.Arrays;
 
 /*Given an array of integers, every element appears twice except for one. Find that single one.

@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 
 /**
  * You are given two linked lists representing two non-negative numbers. 
@@ -10,6 +10,7 @@ package com.zinkirin;
  * Output: 7 -> 0 -> 8
  */
 public class AddTwoNumbers {
+
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if (l1 == null)
             return l2;
@@ -36,4 +37,42 @@ public class AddTwoNumbers {
         return head.next;
         
     }
+	
+	public ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
+		if (l1 == null) {
+            return l2;
+        }
+        
+        if (l2 == null) {
+            return l1;
+        }
+        
+        ListNode l1Current = l1;
+        ListNode l2Current = l2;
+        int sum;
+        while (l1Current != null) {
+            
+            sum = l1Current.val + l2Current.val;
+            if (sum >= 10) { 
+                if (l1Current.next == null) {
+                    l1Current.next = new ListNode(1);
+                } else {
+                    l1Current.next.val += 1;
+                }
+            }
+            l1Current.val += sum % 10;
+            if (l1Current.next == null) {
+                l1Current.next = l2Current.next;
+                return l1;
+            }
+            l1Current = l1Current.next;
+            l2Current = l2Current.next;
+            if (l2Current == null) {
+                return l1;
+            }
+        }
+        
+        
+        return l1;
+	}
 }

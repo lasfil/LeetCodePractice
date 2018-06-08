@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class PopulatingNextRight {
 	public void connect(TreeLinkNode root) {
 		if (root == null)

@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 
 public class BinaryAdd {
 	 public String addBinary(String a, String b) {

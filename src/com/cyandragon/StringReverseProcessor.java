@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 import java.util.Scanner;
 public class StringReverseProcessor {
 	private String orgString;

@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 import java.util.ArrayList;
 /**
  * Distinct SubsequencesOct 19 '12 Given a string S and a string T, count the

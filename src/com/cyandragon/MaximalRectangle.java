@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class MaximalRectangle {
 	public int maximalRectangle(char[][] matrix) {
 		if (matrix == null)

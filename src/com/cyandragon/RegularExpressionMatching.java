@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 /**
  * Implement regular expression matching with support for '.' and '*'.
  * 

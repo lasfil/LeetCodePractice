@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class MultiplyStrings {
 	public String multiply(String num1, String num2) {
 		if (num1 == null || num2 == null)

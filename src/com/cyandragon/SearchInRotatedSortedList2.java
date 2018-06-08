@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class SearchInRotatedSortedList2 {
 	public boolean search(int[] A, int target) {
 		if (A.length == 0)

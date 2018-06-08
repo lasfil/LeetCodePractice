@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class SearchForRange {
 	public int[] searchRange(int[] A, int target) {
 		int len = A.length;

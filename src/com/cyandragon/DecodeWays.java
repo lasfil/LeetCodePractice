@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 /**
  * A message containing letters from A-Z is being encoded to numbers using the
  * following mapping:

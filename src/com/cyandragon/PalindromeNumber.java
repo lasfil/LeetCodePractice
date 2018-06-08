@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 /**
  * Determine whether an integer is a palindrome. Do this without extra space.
  * 

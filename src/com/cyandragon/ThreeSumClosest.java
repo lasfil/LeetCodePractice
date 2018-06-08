@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 import java.util.Arrays;
 /**
  * Given an array S of n integers, find three integers in S such that the sum is

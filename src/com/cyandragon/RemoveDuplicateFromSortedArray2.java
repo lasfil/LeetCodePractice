@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 /**
  * Follow up for "Remove Duplicates": What if duplicates are allowed at most
  * twice?

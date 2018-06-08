@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 
 /**
  * Given a sorted linked list, delete all nodes that have duplicate numbers,

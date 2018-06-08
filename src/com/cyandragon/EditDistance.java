@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class EditDistance {
 	// 两种方法，一种用了m ＋ 1 ＊ n ＋ 1的额外空间，另一种只用一个一维数组维护DP
 	public int minDistance(String word1, String word2) {

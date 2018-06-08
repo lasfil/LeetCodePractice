@@ -1,3 +1,4 @@
+package com.hungerfool.leetcode;
 
 import org.junit.Test;
 
@@ -6,7 +7,6 @@ public class RepeatedSubarray {
 	public void test() {
 		int[] a = { 1, 2, 3, 2, 1 };
 		int[] b = { 1, 2, 3, 4, 7 };
-		Collections.
 		System.out.println(findLength(a, b));
 	}
 

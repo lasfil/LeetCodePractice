@@ -1,4 +1,4 @@
-package com.zinkirin.dynamicprogramming;
+package com.cyandragon.dynamicprogramming;
 
 /*Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
 

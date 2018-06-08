@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class MaxPathSum {
 	private int max = Integer.MIN_VALUE;
 	public class TreeNode {

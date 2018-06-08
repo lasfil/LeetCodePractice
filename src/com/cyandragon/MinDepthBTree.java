@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class MinDepthBTree {
 
 	public class TreeNode {

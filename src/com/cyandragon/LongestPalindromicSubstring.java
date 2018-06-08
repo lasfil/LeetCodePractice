@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 public class LongestPalindromicSubstring {
 	public String longestPalindrome(String s) {
 		int n = s.length();

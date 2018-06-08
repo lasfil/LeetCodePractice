@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 
 public class NumberComplement {
 	public static int findComplement(int num)

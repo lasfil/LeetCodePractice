@@ -1,4 +1,4 @@
-package com.zinkirin;
+package com.cyandragon;
 
 /**
  * Given a string, determine if it is a palindrome, considering only
