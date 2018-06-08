@@ -12,12 +12,19 @@ import java.util.Set;
 
 import com.cyandragon.dynamicprogramming.*;
 import com.hungerfool.PredictTheWinner;
+import com.hungerfool.TwoKeysKeyboard;
 import com.hungerfool.stock.BestTimetoBuyandSellStockwithTransactionFee714;
 
 public class Playboard {
 
 	public static void main(String args[]) {
-		BestTimetoBuyandSellStockwithTransactionFee714.maxProfit();
+		TwoKeysKeyboard.minSteps();
+		Map<Integer, Integer> numMap = new HashMap<Integer, Integer>();
+		numMap.put(0, -6);
+		numMap.put(1, 10);
+		numMap.put(2, 188);
+		System.out.println((Set<Integer>)numMap.values());
+		
 	}
 	
 	public static int[] randomArray(int length) {
