@@ -12,11 +12,10 @@ public class ReorderList {
 		 * while (head != null) { n = head; head = n.next; n.next = null;
 		 * deque.addLast(n); }
 		 * 
-		 * head = deque.pollFirst(); ListNode tail = deque.pollLast(); head.next
-		 * = tail;
+		 * head = deque.pollFirst(); ListNode tail = deque.pollLast(); head.next = tail;
 		 * 
-		 * while (deque.size() > 0) { tail.next = deque.pollFirst(); tail =
-		 * tail.next; tail.next = deque.pollLast(); tail = tail.next; }
+		 * while (deque.size() > 0) { tail.next = deque.pollFirst(); tail = tail.next;
+		 * tail.next = deque.pollLast(); tail = tail.next; }
 		 * 
 		 * tail = null; n = null;
 		 */
@@ -29,16 +28,16 @@ public class ReorderList {
 		while (n != null) {
 			size++;
 			n = n.next;
-		}// get the size of linked list
+		} // get the size of linked list
 
 		while (i++ < (size / 2)) {
 			n1 = n1.next;
-		}// find the middle node of linked list
+		} // find the middle node of linked list
 
 		/*
-		 * while (n != null) { size++; if (size > 2 && size % 2 == 1) { n1 =
-		 * n1.next; } n = n.next; }//find the middle node of linked list, n1 is
-		 * the tail of first half of list
+		 * while (n != null) { size++; if (size > 2 && size % 2 == 1) { n1 = n1.next; }
+		 * n = n.next; }//find the middle node of linked list, n1 is the tail of first
+		 * half of list
 		 */
 		n = n1.next;
 
@@ -48,7 +47,7 @@ public class ReorderList {
 			n.next = halfHead;
 			halfHead = n;
 			n = n1.next;
-		}// seperate to 2 linked list and reverse the second half
+		} // seperate to 2 linked list and reverse the second half
 
 		n = head;
 		while (halfHead != null) {
@@ -57,7 +56,7 @@ public class ReorderList {
 			n1.next = n.next;
 			n.next = n1;
 			n = n.next.next;
-		}// merge 2 linked list to the expected reorder list
+		} // merge 2 linked list to the expected reorder list
 
 		n = null;
 		n1 = null;
@@ -108,7 +107,24 @@ class ListNode {
 		this.val = val;
 		next = null;
 	}
+
+	public static ListNode createListNode(int[] nums) {
+		ListNode curr = new ListNode(nums[0]);
+		ListNode head = curr;
+		for (int i = 1; i < nums.length; i++) {
+			curr.next = new ListNode(nums[i]);
+			curr = curr.next;
+		}
+		return head;
+	}
+
 	public String toString() {
-		return val + "";
+		ListNode n = next;
+		StringBuilder sb = new StringBuilder().append(val).append("-");
+		while (n != null) {
+			sb.append(n.val).append("-");
+			n = n.next;
+		}
+		return sb.toString();
 	}
 }
