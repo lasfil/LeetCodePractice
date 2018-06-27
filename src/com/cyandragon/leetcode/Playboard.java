@@ -15,12 +15,14 @@ import com.cyandragon.dynamicprogramming.*;
 public class Playboard {
 
 	public static void main(String args[]) {
-		TwoKeysKeyboard.minSteps();
-		Map<Integer, Integer> numMap = new HashMap<Integer, Integer>();
-		numMap.put(0, -6);
-		numMap.put(1, 10);
-		numMap.put(2, 188);
-		System.out.println((Set<Integer>)numMap.values());
+//		TwoKeysKeyboard.minSteps();
+//		Map<Integer, Integer> numMap = new HashMap<Integer, Integer>();
+//		numMap.put(0, -6);
+//		numMap.put(1, 10);
+//		numMap.put(2, 188);
+//		System.out.println((Set<Integer>)numMap.values());
+		int a = 0x80000000;
+		System.out.println(a);
 		
 	}
 	

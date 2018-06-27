@@ -34,7 +34,7 @@ public class UniquePath {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(new UniquePath().uniquePaths(3, 6));
+		System.out.println(new UniquePath().uniquePaths(5, 5));
 	}
 
 }
