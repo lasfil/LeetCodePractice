@@ -23,6 +23,8 @@ public class Playboard {
 //		System.out.println((Set<Integer>)numMap.values());
 		int a = 0x80000000;
 		System.out.println(a);
+		System.out.println("fjeinonefipwneipnfoa".hashCode());
+
 		
 	}
 	

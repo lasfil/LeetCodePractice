@@ -1,10 +1,33 @@
 package com.cyandragon.leetcode;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Subsets {
-	public List<List<Integer>> subsets(int[] num) {
+	public List<List<Integer>> subsets(int[] nums) {
+		List<List<Integer>> result = new ArrayList<>();
+		if (nums.length == 0)
+			return result;
+		int max = (1 << nums.length) - 1;
+		while (max >= 0)
+			result.add(generate(nums, max--));
+		return result;
+	}
+
+	public List<Integer> generate(int[] nums, int num) {
+		List<Integer> result = new ArrayList<>();
+
+		for (int i = 0; num > 0; i++) {
+			if ((num & 1) == 1)
+				result.add(nums[i]);
+			num = num >> 1;
+		}
+
+		return result;
+	}
+
+	public List<List<Integer>> subsets2(int[] num) {
 		Arrays.sort(num);
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 
@@ -43,8 +66,7 @@ public class Subsets {
 		for (int i = 0; i < S.length; i++) {
 			int size = subsets.size();
 			for (int j = 0; j < size; j++) {
-				ArrayList<Integer> subset = new ArrayList<Integer>(
-						subsets.get(j));
+				ArrayList<Integer> subset = new ArrayList<Integer>(subsets.get(j));
 				subset.add(S[i]);
 				subsets.add(subset);
 			}

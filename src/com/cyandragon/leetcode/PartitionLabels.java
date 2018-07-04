@@ -1,7 +1,10 @@
 package com.cyandragon.leetcode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import org.junit.Test;
 
 /*
  A string S of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts.
@@ -63,5 +66,34 @@ public class PartitionLabels {
 		}
 		result.add(right - left + 1);
 		return result;
+	}
+
+	public static List<Integer> partitionLabels1(String S) {
+		int[] pos = new int[26];
+		List<Integer> ret = new ArrayList<Integer>();
+		char[] charS = S.toCharArray();
+		int s = 0;
+		int e = 0;
+		while (e < charS.length) {
+			pos[charS[e] - 'a'] = e;
+		}
+		e = 0;
+		while (s < charS.length) {
+			e = pos[charS[s] - 'a'];
+			for (int i = s + 1; i < e; i++) {
+				int last = pos[charS[i] - 'a'];
+				if (last > e) {
+					e = last;
+				}
+			}
+			ret.add(e - s + 1);
+			s = e + 1;
+		}
+		return ret;
+	}
+
+	@Test
+	public void test() {
+		partitionLabels1("ababcbacadefegdehijhklij");
 	}
 }
