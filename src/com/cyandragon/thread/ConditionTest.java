@@ -11,7 +11,7 @@ public class ConditionTest {
 	Condition b = lock.newCondition();
 	Condition c = lock.newCondition();
 
-	int status = 1;
+	private int status = 1;
 
 	public static void main(String[] args) {
 		ConditionTest test = new ConditionTest();

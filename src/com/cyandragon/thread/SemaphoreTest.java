@@ -3,9 +3,9 @@ package com.cyandragon.thread;
 import java.util.concurrent.Semaphore;
 
 public class SemaphoreTest {
-	Semaphore a = new Semaphore(1);
-	Semaphore b = new Semaphore(0);
-	Semaphore c = new Semaphore(0);
+	private Semaphore a = new Semaphore(1);
+	private Semaphore b = new Semaphore(0);
+	private Semaphore c = new Semaphore(0);
 
 	class PrintA implements Runnable {
 		int count = 10;

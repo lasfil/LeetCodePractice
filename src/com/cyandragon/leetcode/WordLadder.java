@@ -1,4 +1,5 @@
 package com.cyandragon.leetcode;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
@@ -9,8 +10,8 @@ import java.util.Set;
 
 public class WordLadder {
 	public int ladderLength(String start, String end, Set<String> dict) {
-		if (start == null || end == null || dict == null || start.length() == 0
-				|| end.length() == 0 || dict.size() == 0 || start.equals(end))
+		if (start == null || end == null || dict == null || start.length() == 0 || end.length() == 0 || dict.size() == 0
+				|| start.equals(end))
 			return 0;
 
 		List<String> cur = new ArrayList<String>();
@@ -19,8 +20,7 @@ public class WordLadder {
 		return bfs(dict, cur, 1, end, visited);
 	}
 
-	private int bfs(Set<String> dict, List<String> cur, int step, String end,
-			HashSet<String> visited) {
+	private int bfs(Set<String> dict, List<String> cur, int step, String end, HashSet<String> visited) {
 		if (cur.size() == 0 || dict.size() == 0)
 			return 0;
 		List<String> next = new ArrayList<String>();
@@ -78,8 +78,7 @@ public class WordLadder {
 					for (int j = 0; j < 26; j++) {
 						char c = sb.charAt(i);
 						sb.setCharAt(i, (char) ('a' + j));
-						if (dict.contains(sb.toString())
-								&& !visited.contains(sb.toString())) {
+						if (dict.contains(sb.toString()) && !visited.contains(sb.toString())) {
 							nextLevel++;
 							st.add(sb.toString());
 							visited.add(sb.toString());
@@ -100,88 +99,127 @@ public class WordLadder {
 	public static void main(String[] args) {
 		String start = "nape";
 		String end = "mild";
-		String[] s = new String[] { "slit", "bunk", "wars", "ping", "viva",
-				"wynn", "wows", "irks", "gang", "pool", "mock", "fort", "heel",
-				"send", "ship", "cols", "alec", "foal", "nabs", "gaze", "giza",
-				"mays", "dogs", "karo", "cums", "jedi", "webb", "lend", "mire",
-				"jose", "catt", "grow", "toss", "magi", "leis", "bead", "kara",
-				"hoof", "than", "ires", "baas", "vein", "kari", "riga", "oars",
-				"gags", "thug", "yawn", "wive", "view", "germ", "flab", "july",
-				"tuck", "rory", "bean", "feed", "rhee", "jeez", "gobs", "lath",
-				"desk", "yoko", "cute", "zeus", "thus", "dims", "link", "dirt",
-				"mara", "disc", "limy", "lewd", "maud", "duly", "elsa", "hart",
-				"rays", "rues", "camp", "lack", "okra", "tome", "math", "plug",
-				"monk", "orly", "friz", "hogs", "yoda", "poop", "tick", "plod",
-				"cloy", "pees", "imps", "lead", "pope", "mall", "frey", "been",
-				"plea", "poll", "male", "teak", "soho", "glob", "bell", "mary",
-				"hail", "scan", "yips", "like", "mull", "kory", "odor", "byte",
-				"kaye", "word", "honk", "asks", "slid", "hopi", "toke", "gore",
-				"flew", "tins", "mown", "oise", "hall", "vega", "sing", "fool",
-				"boat", "bobs", "lain", "soft", "hard", "rots", "sees", "apex",
-				"chan", "told", "woos", "unit", "scow", "gilt", "beef", "jars",
-				"tyre", "imus", "neon", "soap", "dabs", "rein", "ovid", "hose",
-				"husk", "loll", "asia", "cope", "tail", "hazy", "clad", "lash",
-				"sags", "moll", "eddy", "fuel", "lift", "flog", "land", "sigh",
-				"saks", "sail", "hook", "visa", "tier", "maws", "roeg", "gila",
-				"eyes", "noah", "hypo", "tore", "eggs", "rove", "chap", "room",
-				"wait", "lurk", "race", "host", "dada", "lola", "gabs", "sobs",
-				"joel", "keck", "axed", "mead", "gust", "laid", "ends", "oort",
-				"nose", "peer", "kept", "abet", "iran", "mick", "dead", "hags",
-				"tens", "gown", "sick", "odis", "miro", "bill", "fawn", "sumo",
-				"kilt", "huge", "ores", "oran", "flag", "tost", "seth", "sift",
-				"poet", "reds", "pips", "cape", "togo", "wale", "limn", "toll",
-				"ploy", "inns", "snag", "hoes", "jerk", "flux", "fido", "zane",
-				"arab", "gamy", "raze", "lank", "hurt", "rail", "hind", "hoot",
-				"dogy", "away", "pest", "hoed", "pose", "lose", "pole", "alva",
-				"dino", "kind", "clan", "dips", "soup", "veto", "edna", "damp",
-				"gush", "amen", "wits", "pubs", "fuzz", "cash", "pine", "trod",
-				"gunk", "nude", "lost", "rite", "cory", "walt", "mica", "cart",
-				"avow", "wind", "book", "leon", "life", "bang", "draw", "leek",
-				"skis", "dram", "ripe", "mine", "urea", "tiff", "over", "gale",
-				"weir", "defy", "norm", "tull", "whiz", "gill", "ward", "crag",
-				"when", "mill", "firs", "sans", "flue", "reid", "ekes", "jain",
-				"mutt", "hems", "laps", "piss", "pall", "rowe", "prey", "cull",
-				"knew", "size", "wets", "hurl", "wont", "suva", "girt", "prys",
-				"prow", "warn", "naps", "gong", "thru", "livy", "boar", "sade",
-				"amok", "vice", "slat", "emir", "jade", "karl", "loyd", "cerf",
-				"bess", "loss", "rums", "lats", "bode", "subs", "muss", "maim",
-				"kits", "thin", "york", "punt", "gays", "alpo", "aids", "drag",
-				"eras", "mats", "pyre", "clot", "step", "oath", "lout", "wary",
-				"carp", "hums", "tang", "pout", "whip", "fled", "omar", "such",
-				"kano", "jake", "stan", "loop", "fuss", "mini", "byrd", "exit",
-				"fizz", "lire", "emil", "prop", "noes", "awed", "gift", "soli",
-				"sale", "gage", "orin", "slur", "limp", "saar", "arks", "mast",
-				"gnat", "port", "into", "geed", "pave", "awls", "cent", "cunt",
-				"full", "dint", "hank", "mate", "coin", "tars", "scud", "veer",
-				"coax", "bops", "uris", "loom", "shod", "crib", "lids", "drys",
-				"fish", "edit", "dick", "erna", "else", "hahs", "alga", "moho",
-				"wire", "fora", "tums", "ruth", "bets", "duns", "mold", "mush",
-				"swop", "ruby", "bolt", "nave", "kite", "ahem", "brad", "tern",
-				"nips", "whew", "bait", "ooze", "gino", "yuck", "drum", "shoe",
-				"lobe", "dusk", "cult", "paws", "anew", "dado", "nook", "half",
-				"lams", "rich", "cato", "java", "kemp", "vain", "fees", "sham",
-				"auks", "gish", "fire", "elam", "salt", "sour", "loth", "whit",
-				"yogi", "shes", "scam", "yous", "lucy", "inez", "geld", "whig",
-				"thee", "kelp", "loaf", "harm", "tomb", "ever", "airs", "page",
-				"laud", "stun", "paid", "goop", "cobs", "judy", "grab", "doha",
-				"crew", "item", "fogs", "tong", "blip", "vest", "bran", "wend",
-				"bawl", "feel", "jets", "mixt", "tell", "dire", "devi", "milo",
-				"deng", "yews", "weak", "mark", "doug", "fare", "rigs", "poke",
-				"hies", "sian", "suez", "quip", "kens", "lass", "zips", "elva",
-				"brat", "cosy", "teri", "hull", "spun", "russ", "pupa", "weed",
-				"pulp", "main", "grim", "hone", "cord", "barf", "olav", "gaps",
-				"rote", "wilt", "lars", "roll", "balm", "jana", "give", "eire",
-				"faun", "suck", "kegs", "nita", "weer", "tush", "spry", "loge",
-				"nays", "heir", "dope", "roar", "peep", "nags", "ates", "bane",
-				"seas", "sign", "fred", "they", "lien" };
+		String[] s = new String[] { "slit", "bunk", "wars", "ping", "viva", "wynn", "wows", "irks", "gang", "pool",
+				"mock", "fort", "heel", "send", "ship", "cols", "alec", "foal", "nabs", "gaze", "giza", "mays", "dogs",
+				"karo", "cums", "jedi", "webb", "lend", "mire", "jose", "catt", "grow", "toss", "magi", "leis", "bead",
+				"kara", "hoof", "than", "ires", "baas", "vein", "kari", "riga", "oars", "gags", "thug", "yawn", "wive",
+				"view", "germ", "flab", "july", "tuck", "rory", "bean", "feed", "rhee", "jeez", "gobs", "lath", "desk",
+				"yoko", "cute", "zeus", "thus", "dims", "link", "dirt", "mara", "disc", "limy", "lewd", "maud", "duly",
+				"elsa", "hart", "rays", "rues", "camp", "lack", "okra", "tome", "math", "plug", "monk", "orly", "friz",
+				"hogs", "yoda", "poop", "tick", "plod", "cloy", "pees", "imps", "lead", "pope", "mall", "frey", "been",
+				"plea", "poll", "male", "teak", "soho", "glob", "bell", "mary", "hail", "scan", "yips", "like", "mull",
+				"kory", "odor", "byte", "kaye", "word", "honk", "asks", "slid", "hopi", "toke", "gore", "flew", "tins",
+				"mown", "oise", "hall", "vega", "sing", "fool", "boat", "bobs", "lain", "soft", "hard", "rots", "sees",
+				"apex", "chan", "told", "woos", "unit", "scow", "gilt", "beef", "jars", "tyre", "imus", "neon", "soap",
+				"dabs", "rein", "ovid", "hose", "husk", "loll", "asia", "cope", "tail", "hazy", "clad", "lash", "sags",
+				"moll", "eddy", "fuel", "lift", "flog", "land", "sigh", "saks", "sail", "hook", "visa", "tier", "maws",
+				"roeg", "gila", "eyes", "noah", "hypo", "tore", "eggs", "rove", "chap", "room", "wait", "lurk", "race",
+				"host", "dada", "lola", "gabs", "sobs", "joel", "keck", "axed", "mead", "gust", "laid", "ends", "oort",
+				"nose", "peer", "kept", "abet", "iran", "mick", "dead", "hags", "tens", "gown", "sick", "odis", "miro",
+				"bill", "fawn", "sumo", "kilt", "huge", "ores", "oran", "flag", "tost", "seth", "sift", "poet", "reds",
+				"pips", "cape", "togo", "wale", "limn", "toll", "ploy", "inns", "snag", "hoes", "jerk", "flux", "fido",
+				"zane", "arab", "gamy", "raze", "lank", "hurt", "rail", "hind", "hoot", "dogy", "away", "pest", "hoed",
+				"pose", "lose", "pole", "alva", "dino", "kind", "clan", "dips", "soup", "veto", "edna", "damp", "gush",
+				"amen", "wits", "pubs", "fuzz", "cash", "pine", "trod", "gunk", "nude", "lost", "rite", "cory", "walt",
+				"mica", "cart", "avow", "wind", "book", "leon", "life", "bang", "draw", "leek", "skis", "dram", "ripe",
+				"mine", "urea", "tiff", "over", "gale", "weir", "defy", "norm", "tull", "whiz", "gill", "ward", "crag",
+				"when", "mill", "firs", "sans", "flue", "reid", "ekes", "jain", "mutt", "hems", "laps", "piss", "pall",
+				"rowe", "prey", "cull", "knew", "size", "wets", "hurl", "wont", "suva", "girt", "prys", "prow", "warn",
+				"naps", "gong", "thru", "livy", "boar", "sade", "amok", "vice", "slat", "emir", "jade", "karl", "loyd",
+				"cerf", "bess", "loss", "rums", "lats", "bode", "subs", "muss", "maim", "kits", "thin", "york", "punt",
+				"gays", "alpo", "aids", "drag", "eras", "mats", "pyre", "clot", "step", "oath", "lout", "wary", "carp",
+				"hums", "tang", "pout", "whip", "fled", "omar", "such", "kano", "jake", "stan", "loop", "fuss", "mini",
+				"byrd", "exit", "fizz", "lire", "emil", "prop", "noes", "awed", "gift", "soli", "sale", "gage", "orin",
+				"slur", "limp", "saar", "arks", "mast", "gnat", "port", "into", "geed", "pave", "awls", "cent", "cunt",
+				"full", "dint", "hank", "mate", "coin", "tars", "scud", "veer", "coax", "bops", "uris", "loom", "shod",
+				"crib", "lids", "drys", "fish", "edit", "dick", "erna", "else", "hahs", "alga", "moho", "wire", "fora",
+				"tums", "ruth", "bets", "duns", "mold", "mush", "swop", "ruby", "bolt", "nave", "kite", "ahem", "brad",
+				"tern", "nips", "whew", "bait", "ooze", "gino", "yuck", "drum", "shoe", "lobe", "dusk", "cult", "paws",
+				"anew", "dado", "nook", "half", "lams", "rich", "cato", "java", "kemp", "vain", "fees", "sham", "auks",
+				"gish", "fire", "elam", "salt", "sour", "loth", "whit", "yogi", "shes", "scam", "yous", "lucy", "inez",
+				"geld", "whig", "thee", "kelp", "loaf", "harm", "tomb", "ever", "airs", "page", "laud", "stun", "paid",
+				"goop", "cobs", "judy", "grab", "doha", "crew", "item", "fogs", "tong", "blip", "vest", "bran", "wend",
+				"bawl", "feel", "jets", "mixt", "tell", "dire", "devi", "mild", "deng", "yews", "weak", "mark", "doug",
+				"fare", "rigs", "poke", "hies", "sian", "suez", "quip", "kens", "lass", "zips", "elva", "brat", "cosy",
+				"teri", "hull", "spun", "russ", "pupa", "weed", "pulp", "main", "grim", "hone", "cord", "barf", "olav",
+				"gaps", "rote", "wilt", "lars", "roll", "balm", "jana", "give", "eire", "faun", "suck", "kegs", "nita",
+				"weer", "tush", "spry", "loge", "nays", "heir", "dope", "roar", "peep", "nags", "ates", "bane", "seas",
+				"sign", "fred", "they", "lien" };
 
 		Set<String> d = new HashSet<String>();
 		for (String str : s)
 			d.add(str);
-		System.out.println(Calendar.getInstance().getTimeInMillis());
+		// System.out.println(Calendar.getInstance().getTimeInMillis());
 		System.out.println(new WordLadder().ladderLength1(start, end, d));
-		System.out.println(Calendar.getInstance().getTimeInMillis());
-		System.out.println(new WordLadder().ladderLength(start, end, d));
-		System.out.println(Calendar.getInstance().getTimeInMillis());
+		// System.out.println(Calendar.getInstance().getTimeInMillis());
+		// System.out.println(new WordLadder().ladderLength(start, end, d));
+		// System.out.println(Calendar.getInstance().getTimeInMillis());
+
+		//String[] s1 = new String[] { "hot", "dot", "dog", "lot", "log", "cog" };
+		
+		String[] s1 = new String[] {"hot","dog","dot"};
+		List<String> wordList = new ArrayList<String>();
+		for (String str : s1)
+			wordList.add(str);
+		//System.out.println(new WordLadder().ladderLength("a", "c", wordList));
+		System.out.println(new WordLadder().ladderLength("hot", "dog", wordList));
+	}
+
+	public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+		if (!wordList.contains(endWord)) {
+			return 0;
+		}
+		int len = wordList.size();
+		int[][] dis = new int[len][len];
+		int target = wordList.indexOf(endWord);
+		Set<Integer> cur = new HashSet<Integer>();
+		for (int i = 0; i < len; i++) {
+			if (oneDiffLetter(wordList.get(i), beginWord)) {
+				if (i == target) {
+					return 2;
+				}
+				cur.add(i);
+			}
+			for (int j = i + 1; j < len; j++) {
+				if (oneDiffLetter(wordList.get(i), wordList.get(j))) {
+					dis[i][j] = 1;
+					dis[j][i] = 1;
+				}
+			}
+		}
+
+		Set<Integer> next = new HashSet<Integer>();
+		int count = 1;
+		while (!cur.isEmpty()) {
+			count++;
+			for (Integer i : cur) {
+				for (int j = 0; j < len; j++) {
+					if (dis[i][j] == 1) {
+						if (j == target) {
+							return count + 1;
+						}
+						next.add(j);
+					}
+				}
+			}
+			cur.clear();
+			cur.addAll(next);
+			next.clear();
+
+		}
+		return 0;
+	}
+
+	private boolean oneDiffLetter(String a, String b) {
+		char[] aChar = a.toCharArray();
+		char[] bChar = b.toCharArray();
+		int i = 0;
+		int j = aChar.length - 1;
+		while (i <= j && aChar[i] == bChar[i])
+			i++;
+
+		while (j >= 0 && aChar[j] == bChar[j])
+			j--;
+		return i == j;
 	}
 }
